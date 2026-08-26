@@ -58,7 +58,14 @@ moving the bug somewhere you cannot see it.
 
 ## Public repos
 
-The MCP servers came out of a stretch of digging into how AI clients actually talk to external
+#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT</sub>
+
+The panel system this profile is built on. Palettes are derived in OKLCH from a single hue and
+**assert their own contrast ratios**, so an unreadable theme fails at build time instead of shipping.
+Superellipse corners, film grain, one motion idea per panel — all of it built inside GitHub's actual
+rendering envelope, where `<style>` is escaped to plain text and webfonts never load.
+
+The MCP servers below came out of a stretch of digging into how AI clients actually talk to external
 systems. Not where my attention is now, but they still run and they still work.
 
 #### [`brreg-mcp`](https://github.com/hellosverre/brreg-mcp) <sub>JavaScript · MIT</sub>

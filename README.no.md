@@ -58,8 +58,15 @@ flytter bare feilen dit du ikke ser den.
 
 ## Åpen kildekode
 
-MCP-serverne kom ut av en periode der jeg gravde i hvordan AI-klienter faktisk snakker med eksterne
-systemer. Ikke der oppmerksomheten min er nå, men de kjører fortsatt og de virker fortsatt.
+#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT</sub>
+
+Panelsystemet denne profilen er bygget på. Palettene utledes i OKLCH fra én fargetone og
+**sjekker sine egne kontrastforhold**, så et uleselig tema feiler når det bygges i stedet for å bli
+publisert. Superellipse-hjørner, filmkorn, én bevegelse per panel — alt bygget innenfor det GitHub
+faktisk rendrer, der `<style>` blir gjort om til ren tekst og webfonter aldri lastes.
+
+MCP-serverne under kom ut av en periode der jeg gravde i hvordan AI-klienter faktisk snakker med
+eksterne systemer. Ikke der oppmerksomheten min er nå, men de kjører fortsatt og de virker fortsatt.
 
 #### [`brreg-mcp`](https://github.com/hellosverre/brreg-mcp) <sub>JavaScript · MIT</sub>
 
