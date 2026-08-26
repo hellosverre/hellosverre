@@ -93,6 +93,28 @@ Private repos. Happy to walk through any of them, or give a *lærebedrift* read 
 
 <br>
 
+**aether** is the one whose shape I can show without showing the code:
+
+<div align="center">
+  <img alt="aether architecture: browser to Vercel to Cloudflare Tunnel to a VM running Hono and Drizzle, backed by Postgres and Redis"
+       width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/architecture-en.svg">
+</div>
+
+<br>
+
+## Home server
+
+A second-hand box in my flat that has been up for over a year. It runs the dev services behind most
+of the private projects above, plus backups and a few things for family. It is where I learned most
+of what I know about Linux, networking, and why you take a backup *before* you touch the storage
+layout.
+
+<div align="center">
+  <img alt="Home server status" width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/status-en.svg">
+</div>
+
+<br>
+
 <div align="center">
   <a href="mailto:sverresig@proton.me">
     <img alt="Get in touch — sverresig@proton.me" width="100%"

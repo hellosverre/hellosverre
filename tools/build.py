@@ -35,7 +35,28 @@ COPY = {
         place="Ski \u00b7 Norge",
         pitch="Bygger du et AI-system som m\u00e5 t\u00e5le m\u00f8tet med ekte brukere?",
         availability="\u00e5pen for l\u00e6replass \u00b7 aug 2027",
+        server="HJEMMESERVER",
+        since="nede siden",
+        generated="generert",
+        arch_caption="Ingen \u00e5pne innkommende porter p\u00e5 VM-en \u2014 tunnelen ringer ut til Cloudflare.",
+        arch_sub="foresp\u00f8rselens vei",
     ),
+}
+COPY["en"].update(
+    server="HOME SERVER",
+    since="down since",
+    generated="generated",
+    arch_caption="No inbound ports open on the VM \u2014 the tunnel dials out to Cloudflare.",
+    arch_sub="request path",
+)
+
+# Status colours are semantic rather than decorative, which is why they are allowed to
+# break the one-accent rule -- same reason Supabase and Linear carry functional hues.
+# All three sit at matched OKLCH lightness so they belong to the same band.
+STATE = {
+    "up":          ("#76D5A1", "UP"),
+    "maintenance": ("#E7B460", "MAINTENANCE"),
+    "down":        ("#ED756E", "DOWN"),
 }
 
 PAD = 56
@@ -217,6 +238,125 @@ def footer(lang):
 '''
 
 
+# ---------------------------------------------------------------- server status
+
+def status(lang, cfg, stamp):
+    """Live-ish status for the home server, driven by status.json.
+
+    Deliberately stamped with a generation time rather than implying real-time: the
+    panel is a committed SVG behind GitHub's camo proxy, so it is minutes-to-hours
+    stale by design and saying otherwise would be a lie.
+    """
+    C = COPY[lang]
+    colour, word = STATE[cfg["state"]]
+    txt = cfg[lang]
+    W, H = 1000, 168
+    uid = "st"
+    rim, border = edges(uid, W, H)
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{C['server']}: {word} - {txt['headline']}">
+  <defs>{defs(uid, W, H)}</defs>
+  <g clip-path="url(#{uid}-clip)">
+    {slab(uid, W, H, sweep_dur=19, sweep_delay=7)}
+
+    <text x="{PAD}" y="48" font-family="{MONO}" font-size="10.5" fill="{P['dim']}" letter-spacing="1.6">{C['server']}</text>
+
+    <circle cx="{PAD + 6}" cy="86" r="5" fill="{colour}"/>
+    <circle cx="{PAD + 6}" cy="86" r="5" fill="none" stroke="{colour}" stroke-width="1">
+      <animate attributeName="r" values="5;16;16" keyTimes="0;0.7;1" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.65;0;0" keyTimes="0;0.7;1" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="{PAD + 26}" y="94" font-family="{MONO}" font-size="24" fill="{colour}" letter-spacing="1.5">{word}</text>
+    <text x="{PAD + 34 + mono_width(word, 24)}" y="94" font-family="{MONO}" font-size="15" fill="{P['muted']}">{txt['headline']}</text>
+
+    <text x="{PAD}" y="128" font-family="{MONO}" font-size="12.5" fill="{P['dim']}">{txt['detail']}</text>
+
+    <text x="{W - PAD}" y="86" text-anchor="end" font-family="{MONO}" font-size="12.5" fill="{P['muted']}">{C['since']} {cfg['since']}</text>
+    <text x="{W - PAD}" y="107" text-anchor="end" font-family="{MONO}" font-size="11" fill="{P['dim']}">{C['generated']} {stamp}</text>
+    {rim}
+  </g>
+  {border}
+</svg>
+'''
+
+
+# ---------------------------------------------------------------- architecture
+
+# aether, taken from the two repo descriptions: a Next.js 15 frontend on Vercel and a
+# Hono + Drizzle backend on a VM reached through a Cloudflare Tunnel.
+NODES = [
+    dict(x=56,  w=118, cy=142, label="browser",    sub=""),
+    dict(x=214, w=168, cy=142, label="Vercel",     sub="Next.js 15"),
+    dict(x=422, w=176, cy=142, label="Cloudflare", sub="Tunnel"),
+    dict(x=638, w=150, cy=142, label="VM",         sub="Hono + Drizzle"),
+    dict(x=828, w=126, cy=100, label="Postgres",   sub=""),
+    dict(x=828, w=126, cy=184, label="Redis",      sub=""),
+]
+HOPS = [(0, 1), (1, 2), (2, 3), (3, 4), (3, 5)]
+BOX_H = 56
+
+
+def _hop(a, b, begin, back=False):
+    """A packet crossing one connector. Request out in accent, response back smaller."""
+    x1, y1 = a["x"] + a["w"], a["cy"]
+    x2, y2 = b["x"], b["cy"]
+    if back:
+        x1, y1, x2, y2 = x2, y2, x1, y1
+    r, op = (2.1, 0.95) if not back else (1.6, 0.5)
+    return (f'<circle r="{r}" fill="{P["accent"]}" opacity="0">'
+            f'<animate attributeName="cx" values="{x1};{x2}" dur="0.9s" repeatCount="indefinite" begin="{begin}s"/>'
+            f'<animate attributeName="cy" values="{y1};{y2}" dur="0.9s" repeatCount="indefinite" begin="{begin}s"/>'
+            f'<animate attributeName="opacity" values="0;{op};{op};0" keyTimes="0;0.15;0.75;1" '
+            f'dur="0.9s" repeatCount="indefinite" begin="{begin}s"/></circle>')
+
+
+def architecture(lang):
+    C = COPY[lang]
+    W, H = 1000, 268
+    uid = "a"
+    rim, border = edges(uid, W, H)
+
+    parts = []
+    for a_i, b_i in HOPS:
+        a, b = NODES[a_i], NODES[b_i]
+        parts.append(f'<path d="M {a["x"]+a["w"]} {a["cy"]} L {b["x"]} {b["cy"]}" fill="none" '
+                     f'stroke="{P["accent"]}" stroke-width="1" opacity="0.26"/>')
+    for n in NODES:
+        top = n["cy"] - BOX_H / 2
+        parts.append(
+            f'<rect x="{n["x"]}" y="{top}" width="{n["w"]}" height="{BOX_H}" rx="10" '
+            f'fill="#FFFFFF" fill-opacity="0.028" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="1"/>')
+        cx = n["x"] + n["w"] / 2
+        if n["sub"]:
+            parts.append(f'<text x="{cx}" y="{n["cy"] - 2}" text-anchor="middle" font-family="{MONO}" '
+                         f'font-size="13" fill="{P["text"]}">{n["label"]}</text>'
+                         f'<text x="{cx}" y="{n["cy"] + 15}" text-anchor="middle" font-family="{MONO}" '
+                         f'font-size="10.5" fill="{P["dim"]}">{n["sub"]}</text>')
+        else:
+            parts.append(f'<text x="{cx}" y="{n["cy"] + 5}" text-anchor="middle" font-family="{MONO}" '
+                         f'font-size="13" fill="{P["text"]}">{n["label"]}</text>')
+    # one relay per hop, staggered, then the responses coming back the other way
+    for i, (a_i, b_i) in enumerate(HOPS):
+        a, b = NODES[a_i], NODES[b_i]
+        out = i * 0.75 if b_i != 5 else 3 * 0.75
+        parts.append(_hop(a, b, out))
+        parts.append(_hop(a, b, out + 3.2, back=True))
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="aether architecture: browser to Vercel to Cloudflare Tunnel to VM running Hono, backed by Postgres and Redis">
+  <defs>{defs(uid, W, H)}</defs>
+  <g clip-path="url(#{uid}-clip)">
+    {slab(uid, W, H, sweep_dur=21, sweep_delay=3)}
+    <text x="{PAD}" y="46" font-family="{MONO}" font-size="10.5" fill="{P['dim']}" letter-spacing="1.6">AETHER</text>
+    <text x="{PAD + 76}" y="46" font-family="{MONO}" font-size="10.5" fill="{P['accent']}" letter-spacing="1.2">{C['arch_sub']}</text>
+    {"".join(parts)}
+    <text x="{PAD}" y="240" font-family="{MONO}" font-size="12" fill="{P['muted']}">{C['arch_caption']}</text>
+    {rim}
+  </g>
+  {border}
+</svg>
+'''
+
+
 # ---------------------------------------------------------------- language pills
 
 PILL_H, PILL_FS = 36, 13
@@ -255,12 +395,23 @@ def pill(label, on):
 PILLS = {"en": "English", "no": "Norsk"}
 
 if __name__ == "__main__":
+    import datetime as _dt
+    import json
+
     os.makedirs(OUT, exist_ok=True)
-    print("building panels:")
+    with open(os.path.join(ROOT, "status.json"), encoding="utf-8") as f:
+        cfg = json.load(f)
+    if cfg["state"] not in STATE:
+        raise SystemExit("status.json: state must be one of %s" % ", ".join(STATE))
+    stamp = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    print("building panels:  server=%s" % cfg["state"])
     write(os.path.join(OUT, "stack.svg"), stack())
     for lang in COPY:
         write(os.path.join(OUT, "banner-%s.svg" % lang), banner(lang))
         write(os.path.join(OUT, "footer-%s.svg" % lang), footer(lang))
+        write(os.path.join(OUT, "status-%s.svg" % lang), status(lang, cfg, stamp))
+        write(os.path.join(OUT, "architecture-%s.svg" % lang), architecture(lang))
     for lang, label in PILLS.items():
         for state in (True, False):
             write(os.path.join(OUT, "lang-%s-%s.svg" % (lang, "on" if state else "off")),
