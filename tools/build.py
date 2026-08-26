@@ -17,12 +17,26 @@ OUT = os.path.join(ROOT, "assets")
 
 WORDMARK_FONT = r"C:/Users/AK/AppData/Local/Microsoft/Windows/Fonts/AquireBold-8Ma60.otf"
 NAME = "SVERRE"
-TAGLINE = "building AI systems, fundamentals first"
 STACK_LINE = "TypeScript  \u00b7  Python  \u00b7  Next.js  \u00b7  Hono  \u00b7  Postgres  \u00b7  Docker  \u00b7  Linux"
-PLACE = "Ski \u00b7 Norge"
 EMAIL = "sverresig@proton.me"
-PITCH = "Building an AI system that has to survive contact with real users?"
-AVAILABILITY = "\u00e5pen for l\u00e6replass \u00b7 aug 2027"
+
+# GitHub strips <style> and JS from markdown, so a live language switch is impossible.
+# The toggle is two linked pills and a second README; the panels carrying copy are
+# therefore built once per language. stack.svg is tech names only, so it stays shared.
+COPY = {
+    "en": dict(
+        tagline="building AI systems, fundamentals first",
+        place="Ski \u00b7 Norway",
+        pitch="Building an AI system that has to survive contact with real users?",
+        availability="open to apprenticeship \u00b7 aug 2027",
+    ),
+    "no": dict(
+        tagline="bygger AI-systemer, grunnprinsipper f\u00f8rst",
+        place="Ski \u00b7 Norge",
+        pitch="Bygger du et AI-system som m\u00e5 t\u00e5le m\u00f8tet med ekte brukere?",
+        availability="\u00e5pen for l\u00e6replass \u00b7 aug 2027",
+    ),
+}
 
 PAD = 56
 
@@ -42,7 +56,8 @@ def flag(x, y, w=21.0, h=15.0):
 
 # ---------------------------------------------------------------- banner
 
-def banner():
+def banner(lang):
+    TAGLINE, PLACE = COPY[lang]["tagline"], COPY[lang]["place"]
     W, H = 1000, 288
     uid = "b"
     cx, cy, s = 872, 128, 1.15
@@ -175,7 +190,8 @@ def stack():
 
 # ---------------------------------------------------------------- footer
 
-def footer():
+def footer(lang):
+    PITCH, AVAILABILITY = COPY[lang]["pitch"], COPY[lang]["availability"]
     W, H = 1000, 140
     uid = "f"
     rim, border = edges(uid, W, H)
@@ -201,9 +217,51 @@ def footer():
 '''
 
 
+# ---------------------------------------------------------------- language pills
+
+PILL_H, PILL_FS = 36, 13
+
+
+def pill(label, on):
+    """One half of the language toggle.
+
+    Two separate images rather than one, because a single SVG can only carry one link
+    in markdown -- per-region hrefs inside an <img> never reach the reader.
+    """
+    W = int(mono_width(label, PILL_FS) + 38)
+    H = PILL_H
+    uid = "p"
+    stroke, stroke_op = (P["accent"], "0.55") if on else ("#FFFFFF", "0.10")
+    text = P["accent"] if on else P["muted"]
+    shape = squircle(W, H, 10)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{label}{' (current)' if on else ''}">
+  <defs>
+    <linearGradient id="{uid}-slab" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="{P['surface']}"/>
+      <stop offset="1" stop-color="{P['ink']}"/>
+    </linearGradient>
+    <clipPath id="{uid}-clip"><path d="{shape}"/></clipPath>
+  </defs>
+  <g clip-path="url(#{uid}-clip)">
+    <rect width="{W}" height="{H}" fill="url(#{uid}-slab)"/>
+    <text x="{W/2}" y="{H/2 + 4.5}" text-anchor="middle" font-family="{MONO}"
+          font-size="{PILL_FS}" fill="{text}" letter-spacing="0.4">{label}</text>
+  </g>
+  <path d="{shape}" fill="none" stroke="{stroke}" stroke-opacity="{stroke_op}" stroke-width="1"/>
+</svg>
+'''
+
+
+PILLS = {"en": "English", "no": "Norsk"}
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     print("building panels:")
-    write(os.path.join(OUT, "banner.svg"), banner())
     write(os.path.join(OUT, "stack.svg"), stack())
-    write(os.path.join(OUT, "footer.svg"), footer())
+    for lang in COPY:
+        write(os.path.join(OUT, "banner-%s.svg" % lang), banner(lang))
+        write(os.path.join(OUT, "footer-%s.svg" % lang), footer(lang))
+    for lang, label in PILLS.items():
+        for state in (True, False):
+            write(os.path.join(OUT, "lang-%s-%s.svg" % (lang, "on" if state else "off")),
+                  pill(label, state))

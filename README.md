@@ -1,6 +1,14 @@
+<!-- Panels are generated: python tools/build.py
+     This file and README.no.md are the same document in two languages. Keep them in sync. -->
+
+<div align="center">
+  <img alt="English" height="36" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/lang-en-on.svg">
+  <a href="https://github.com/hellosverre/hellosverre/blob/main/README.no.md"><img alt="Norsk" height="36" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/lang-no-off.svg"></a>
+</div>
+
 <div align="center">
   <img alt="Sverre — building AI systems, fundamentals first" width="100%"
-       src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/banner.svg">
+       src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/banner-en.svg">
 </div>
 
 <div align="center">
@@ -8,9 +16,9 @@
   &nbsp;
   <a href="https://github.com/hellosverre?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/repositories-081A10?style=flat-square&logo=github&logoColor=76D5A1&labelColor=081A10"></a>
   &nbsp;
-  <img alt="Based in Ski, Norway" src="https://img.shields.io/badge/Ski%2C%20Norge-081A10?style=flat-square&logo=googlemaps&logoColor=76D5A1&labelColor=081A10">
+  <img alt="Based in Ski, Norway" src="https://img.shields.io/badge/Ski%2C%20Norway-081A10?style=flat-square&logo=googlemaps&logoColor=76D5A1&labelColor=081A10">
   &nbsp;
-  <img alt="Open to apprenticeship from August 2027" src="https://img.shields.io/badge/l%C3%A6replass-aug%202027-76D5A1?style=flat-square&labelColor=081A10">
+  <img alt="Open to apprenticeship from August 2027" src="https://img.shields.io/badge/apprenticeship-aug%202027-76D5A1?style=flat-square&labelColor=081A10">
 </div>
 
 <br>
@@ -32,9 +40,9 @@ one prompt hold up and another fall over. Otherwise you are not building anythin
 moving the bug somewhere you cannot see it.
 
 > [!NOTE]
-> **Ser etter læreplass fra august 2027** — IT-utviklerfaget eller IT-driftsfaget, i Ski/Oslo-området.
-> Går Vg2 Informasjonsteknologi nå og skal ta fagbrev. Har kodet i flere år og driftet egen server i over ett år.
-> Er du lærebedrift, eller kjenner du en? **[Ta kontakt →](mailto:sverresig@proton.me)**
+> **Looking for an apprenticeship from August 2027** — *IT-utviklerfaget* or *IT-driftsfaget*, in the Ski/Oslo area.
+> Currently in Vg2 Informasjonsteknologi, heading for a *fagbrev*. Several years of coding, and a home server I have run for over a year.
+> Are you a *lærebedrift*, or do you know one? **[Get in touch →](mailto:sverresig@proton.me)**
 
 <br>
 
@@ -55,13 +63,14 @@ systems. Not where my attention is now, but they still run and they still work.
 
 #### [`brreg-mcp`](https://github.com/hellosverre/brreg-mcp) <sub>JavaScript · MIT</sub>
 
-Company lookup against **Enhetsregisteret**: organisasjonsnummer, roles, subunits, live updates.
-Ask an AI client who sits on a board and it answers from the register rather than from memory.
+Company lookup against **Enhetsregisteret**, the Norwegian business register: organisation numbers,
+roles, subunits, live updates. Ask an AI client who sits on a board and it answers from the register
+rather than from memory.
 
 #### [`kartverket-mcp`](https://github.com/hellosverre/kartverket-mcp) <sub>JavaScript · MIT</sub>
 
-Norwegian **addresses, place names and elevation** from Kartverket's open APIs.
-Geocoding and høydedata without signing up for anything.
+Norwegian **addresses, place names and elevation** from the open APIs of Kartverket, the national
+mapping authority. Geocoding and elevation data without signing up for anything.
 
 #### [`discord-ts-template`](https://github.com/hellosverre/discord-ts-template) <sub>TypeScript</sub>
 
@@ -72,7 +81,7 @@ cooldowns, permission gates, context menus, autocomplete, hot reload.
 
 ## Also built
 
-Private repos. Happy to walk through any of them, or give a lærebedrift read access.
+Private repos. Happy to walk through any of them, or give a *lærebedrift* read access.
 
 | Project | What it is | Stack |
 |---|---|---|
@@ -87,6 +96,6 @@ Private repos. Happy to walk through any of them, or give a lærebedrift read ac
 <div align="center">
   <a href="mailto:sverresig@proton.me">
     <img alt="Get in touch — sverresig@proton.me" width="100%"
-         src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/footer.svg">
+         src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/footer-en.svg">
   </a>
 </div>

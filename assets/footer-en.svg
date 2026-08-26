@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 140" width="1000" height="140" role="img" aria-label="Contact: sverresig@proton.me">
+  <defs>
+    <linearGradient id="f-slab" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#081A10"/>
+      <stop offset="1" stop-color="#030D07"/>
+    </linearGradient>
+
+    <linearGradient id="f-rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#FFFFFF" stop-opacity="0.02"/>
+      <stop offset="0.35" stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="1"    stop-color="#FFFFFF" stop-opacity="0.03"/>
+    </linearGradient>
+
+    <linearGradient id="f-sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.25" stop-color="#FFFFFF" stop-opacity="0.018"/>
+      <stop offset="0.5"  stop-color="#FFFFFF" stop-opacity="0.075"/>
+      <stop offset="0.75" stop-color="#FFFFFF" stop-opacity="0.018"/>
+      <stop offset="1"    stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="f-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+    </filter>
+
+    <clipPath id="f-clip"><path d="M 30.00 0.00 L 970.00 0.00 L 971.67 0.00 L 973.33 0.00 L 975.00 0.00 L 976.67 0.01 L 978.33 0.02 L 980.00 0.05 L 981.67 0.10 L 983.33 0.18 L 985.00 0.30 L 986.67 0.49 L 988.33 0.76 L 990.00 1.15 L 991.67 1.70 L 993.33 2.49 L 995.00 3.63 L 996.67 5.37 L 998.33 8.43 L 1000.00 30.00 L 1000.00 110.00 L 998.33 131.57 L 996.67 134.63 L 995.00 136.37 L 993.33 137.51 L 991.67 138.30 L 990.00 138.85 L 988.33 139.24 L 986.67 139.51 L 985.00 139.70 L 983.33 139.82 L 981.67 139.90 L 980.00 139.95 L 978.33 139.98 L 976.67 139.99 L 975.00 140.00 L 973.33 140.00 L 971.67 140.00 L 970.00 140.00 L 30.00 140.00 L 28.33 140.00 L 26.67 140.00 L 25.00 140.00 L 23.33 139.99 L 21.67 139.98 L 20.00 139.95 L 18.33 139.90 L 16.67 139.82 L 15.00 139.70 L 13.33 139.51 L 11.67 139.24 L 10.00 138.85 L 8.33 138.30 L 6.67 137.51 L 5.00 136.37 L 3.33 134.63 L 1.67 131.57 L 0.00 110.00 L 0.00 30.00 L 1.67 8.43 L 3.33 5.37 L 5.00 3.63 L 6.67 2.49 L 8.33 1.70 L 10.00 1.15 L 11.67 0.76 L 13.33 0.49 L 15.00 0.30 L 16.67 0.18 L 18.33 0.10 L 20.00 0.05 L 21.67 0.02 L 23.33 0.01 L 25.00 0.00 L 26.67 0.00 L 28.33 0.00 L 30.00 0.00 Z"/></clipPath></defs>
+  <g clip-path="url(#f-clip)">
+    
+    <rect width="1000" height="140" fill="url(#f-slab)"/>
+    <g transform="translate(-460,0)">
+      <rect x="0" y="-140" width="360" height="420" fill="url(#f-sheen)"
+            transform="rotate(14 180.0 70.0)"/>
+      <animateTransform attributeName="transform" type="translate"
+                        values="-460,0; 1360,0" dur="15s"
+                        begin="5s" repeatCount="indefinite"/>
+    </g>
+    <rect width="1000" height="140" filter="url(#f-grain)" opacity="0.055"/>
+    <text x="56" y="62" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="24" fill="#76D5A1">sverresig@proton.me</text>
+    <text x="56" y="94" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="13" fill="#A5ADA8">Building an AI system that has to survive contact with real users?</text>
+
+    <circle cx="676.1" cy="72" r="4" fill="#76D5A1"/>
+    <circle cx="676.1" cy="72" r="4" fill="none" stroke="#76D5A1" stroke-width="1">
+      <animate attributeName="r" values="4;13;13" keyTimes="0;0.7;1" dur="2.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0;0" keyTimes="0;0.7;1" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="944" y="77" text-anchor="end" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#767E79">open to apprenticeship · aug 2027</text>
+    <rect width="1000" height="1.25" fill="url(#f-rim)"/>
+  </g>
+  <path d="M 30.00 0.00 L 970.00 0.00 L 971.67 0.00 L 973.33 0.00 L 975.00 0.00 L 976.67 0.01 L 978.33 0.02 L 980.00 0.05 L 981.67 0.10 L 983.33 0.18 L 985.00 0.30 L 986.67 0.49 L 988.33 0.76 L 990.00 1.15 L 991.67 1.70 L 993.33 2.49 L 995.00 3.63 L 996.67 5.37 L 998.33 8.43 L 1000.00 30.00 L 1000.00 110.00 L 998.33 131.57 L 996.67 134.63 L 995.00 136.37 L 993.33 137.51 L 991.67 138.30 L 990.00 138.85 L 988.33 139.24 L 986.67 139.51 L 985.00 139.70 L 983.33 139.82 L 981.67 139.90 L 980.00 139.95 L 978.33 139.98 L 976.67 139.99 L 975.00 140.00 L 973.33 140.00 L 971.67 140.00 L 970.00 140.00 L 30.00 140.00 L 28.33 140.00 L 26.67 140.00 L 25.00 140.00 L 23.33 139.99 L 21.67 139.98 L 20.00 139.95 L 18.33 139.90 L 16.67 139.82 L 15.00 139.70 L 13.33 139.51 L 11.67 139.24 L 10.00 138.85 L 8.33 138.30 L 6.67 137.51 L 5.00 136.37 L 3.33 134.63 L 1.67 131.57 L 0.00 110.00 L 0.00 30.00 L 1.67 8.43 L 3.33 5.37 L 5.00 3.63 L 6.67 2.49 L 8.33 1.70 L 10.00 1.15 L 11.67 0.76 L 13.33 0.49 L 15.00 0.30 L 16.67 0.18 L 18.33 0.10 L 20.00 0.05 L 21.67 0.02 L 23.33 0.01 L 25.00 0.00 L 26.67 0.00 L 28.33 0.00 L 30.00 0.00 Z" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1"/>
+</svg>
