@@ -58,7 +58,7 @@ flytter bare feilen dit du ikke ser den.
 
 ## Åpen kildekode
 
-#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT</sub>
+#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT · <code>pip install slabkit</code></sub>
 
 Panelsystemet denne profilen er bygget på. Palettene utledes i OKLCH fra én fargetone og
 **sjekker sine egne kontrastforhold**, så et uleselig tema feiler når det bygges i stedet for å bli

@@ -58,7 +58,7 @@ moving the bug somewhere you cannot see it.
 
 ## Public repos
 
-#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT</sub>
+#### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT · <code>pip install slabkit</code></sub>
 
 The panel system this profile is built on. Palettes are derived in OKLCH from a single hue and
 **assert their own contrast ratios**, so an unreadable theme fails at build time instead of shipping.
