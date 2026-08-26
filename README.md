@@ -41,7 +41,7 @@ moving the bug somewhere you cannot see it.
 
 > [!NOTE]
 > **Looking for an apprenticeship from August 2027** — *IT-utviklerfaget* or *IT-driftsfaget*, in the Ski/Oslo area.
-> Currently in Vg2 Informasjonsteknologi, heading for a *fagbrev*. Several years of coding, and a home server I have run for over a year.
+> Currently in Vg2 Informasjonsteknologi, heading for a *fagbrev*. Several years of coding, and a home server I ran for over a year.
 > Are you a *lærebedrift*, or do you know one? **[Get in touch →](mailto:sverresig@proton.me)**
 
 <br>
@@ -49,7 +49,7 @@ moving the bug somewhere you cannot see it.
 ## Stack
 
 <div align="center">
-  <img alt="Stack: TypeScript, JavaScript, Python, Next.js, React, Hono, Tailwind, Tauri, Postgres, libSQL, Redis, Drizzle, Linux, Docker, Cloudflare Tunnel, Vercel, Proxmox"
+  <img alt="Stack: TypeScript, JavaScript, Python, Next.js, React, Hono, Tailwind, Tauri, Postgres, libSQL, Redis, Drizzle, Linux, Docker, Cloudflare Tunnel, Vercel"
        width="100%"
        src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/stack.svg">
 </div>
@@ -105,19 +105,6 @@ Private repos. Happy to walk through any of them, or give a *lærebedrift* read 
 <div align="center">
   <img alt="aether architecture: browser to Vercel to Cloudflare Tunnel to a VM running Hono and Drizzle, backed by Postgres and Redis"
        width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/architecture-en.svg">
-</div>
-
-<br>
-
-## Home server
-
-A second-hand box in my flat that has been up for over a year. It runs the dev services behind most
-of the private projects above, plus backups and a few things for family. It is where I learned most
-of what I know about Linux, networking, and why you take a backup *before* you touch the storage
-layout.
-
-<div align="center">
-  <img alt="Home server status" width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/status-en.svg">
 </div>
 
 <br>

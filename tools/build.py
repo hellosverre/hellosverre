@@ -35,29 +35,15 @@ COPY = {
         place="Ski \u00b7 Norge",
         pitch="Bygger du et AI-system som m\u00e5 t\u00e5le m\u00f8tet med ekte brukere?",
         availability="\u00e5pen for l\u00e6replass \u00b7 aug 2027",
-        server="HJEMMESERVER",
-        since="nede siden",
-        generated="generert",
         arch_caption="Ingen \u00e5pne innkommende porter p\u00e5 VM-en \u2014 tunnelen ringer ut til Cloudflare.",
         arch_sub="foresp\u00f8rselens vei",
     ),
 }
 COPY["en"].update(
-    server="HOME SERVER",
-    since="down since",
-    generated="generated",
     arch_caption="No inbound ports open on the VM \u2014 the tunnel dials out to Cloudflare.",
     arch_sub="request path",
 )
 
-# Status colours are semantic rather than decorative, which is why they are allowed to
-# break the one-accent rule -- same reason Supabase and Linear carry functional hues.
-# All three sit at matched OKLCH lightness so they belong to the same band.
-STATE = {
-    "up":          ("#76D5A1", "UP"),
-    "maintenance": ("#E7B460", "MAINTENANCE"),
-    "down":        ("#ED756E", "DOWN"),
-}
 
 PAD = 56
 
@@ -135,7 +121,7 @@ GROUPS = [
     ("WRITE", ["TypeScript", "JavaScript", "Python"]),
     ("BUILD", ["Next.js", "React", "Hono", "Tailwind", "Tauri"]),
     ("STORE", ["Postgres", "libSQL", "Redis", "Drizzle"]),
-    ("RUN",   ["Linux", "Docker", "Cloudflare Tunnel", "Vercel", "Proxmox"]),
+    ("RUN",   ["Linux", "Docker", "Cloudflare Tunnel", "Vercel"]),
 ]
 
 CHIP_H, CHIP_FS, CHIP_PAD, CHIP_GAP = 36, 15, 16, 10
@@ -231,48 +217,6 @@ def footer(lang):
       <animate attributeName="opacity" values="0.7;0;0" keyTimes="0;0.7;1" dur="2.6s" repeatCount="indefinite"/>
     </circle>
     <text x="{W - PAD}" y="77" text-anchor="end" font-family="{MONO}" font-size="12.5" fill="{P['dim']}">{AVAILABILITY}</text>
-    {rim}
-  </g>
-  {border}
-</svg>
-'''
-
-
-# ---------------------------------------------------------------- server status
-
-def status(lang, cfg, stamp):
-    """Live-ish status for the home server, driven by status.json.
-
-    Deliberately stamped with a generation time rather than implying real-time: the
-    panel is a committed SVG behind GitHub's camo proxy, so it is minutes-to-hours
-    stale by design and saying otherwise would be a lie.
-    """
-    C = COPY[lang]
-    colour, word = STATE[cfg["state"]]
-    txt = cfg[lang]
-    W, H = 1000, 168
-    uid = "st"
-    rim, border = edges(uid, W, H)
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="{C['server']}: {word} - {txt['headline']}">
-  <defs>{defs(uid, W, H)}</defs>
-  <g clip-path="url(#{uid}-clip)">
-    {slab(uid, W, H, sweep_dur=19, sweep_delay=7)}
-
-    <text x="{PAD}" y="48" font-family="{MONO}" font-size="10.5" fill="{P['dim']}" letter-spacing="1.6">{C['server']}</text>
-
-    <circle cx="{PAD + 6}" cy="86" r="5" fill="{colour}"/>
-    <circle cx="{PAD + 6}" cy="86" r="5" fill="none" stroke="{colour}" stroke-width="1">
-      <animate attributeName="r" values="5;16;16" keyTimes="0;0.7;1" dur="3s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.65;0;0" keyTimes="0;0.7;1" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    <text x="{PAD + 26}" y="94" font-family="{MONO}" font-size="24" fill="{colour}" letter-spacing="1.5">{word}</text>
-    <text x="{PAD + 34 + mono_width(word, 24)}" y="94" font-family="{MONO}" font-size="15" fill="{P['muted']}">{txt['headline']}</text>
-
-    <text x="{PAD}" y="128" font-family="{MONO}" font-size="12.5" fill="{P['dim']}">{txt['detail']}</text>
-
-    <text x="{W - PAD}" y="86" text-anchor="end" font-family="{MONO}" font-size="12.5" fill="{P['muted']}">{C['since']} {cfg['since']}</text>
-    <text x="{W - PAD}" y="107" text-anchor="end" font-family="{MONO}" font-size="11" fill="{P['dim']}">{C['generated']} {stamp}</text>
     {rim}
   </g>
   {border}
@@ -395,22 +339,13 @@ def pill(label, on):
 PILLS = {"en": "English", "no": "Norsk"}
 
 if __name__ == "__main__":
-    import datetime as _dt
-    import json
-
     os.makedirs(OUT, exist_ok=True)
-    with open(os.path.join(ROOT, "status.json"), encoding="utf-8") as f:
-        cfg = json.load(f)
-    if cfg["state"] not in STATE:
-        raise SystemExit("status.json: state must be one of %s" % ", ".join(STATE))
-    stamp = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
-    print("building panels:  server=%s" % cfg["state"])
+    print("building panels:")
     write(os.path.join(OUT, "stack.svg"), stack())
     for lang in COPY:
         write(os.path.join(OUT, "banner-%s.svg" % lang), banner(lang))
         write(os.path.join(OUT, "footer-%s.svg" % lang), footer(lang))
-        write(os.path.join(OUT, "status-%s.svg" % lang), status(lang, cfg, stamp))
         write(os.path.join(OUT, "architecture-%s.svg" % lang), architecture(lang))
     for lang, label in PILLS.items():
         for state in (True, False):

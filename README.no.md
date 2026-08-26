@@ -49,7 +49,7 @@ flytter bare feilen dit du ikke ser den.
 ## Stack
 
 <div align="center">
-  <img alt="Stack: TypeScript, JavaScript, Python, Next.js, React, Hono, Tailwind, Tauri, Postgres, libSQL, Redis, Drizzle, Linux, Docker, Cloudflare Tunnel, Vercel, Proxmox"
+  <img alt="Stack: TypeScript, JavaScript, Python, Next.js, React, Hono, Tailwind, Tauri, Postgres, libSQL, Redis, Drizzle, Linux, Docker, Cloudflare Tunnel, Vercel"
        width="100%"
        src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/stack.svg">
 </div>
@@ -104,19 +104,6 @@ Private repoer. Jeg går gjerne gjennom hvilket som helst av dem, eller gir en l
 <div align="center">
   <img alt="aether-arkitektur: nettleser til Vercel til Cloudflare Tunnel til en VM med Hono og Drizzle, med Postgres og Redis bak"
        width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/architecture-no.svg">
-</div>
-
-<br>
-
-## Hjemmeserver
-
-En brukt maskin i leiligheten som har gått i over ett år. Den kjører utviklingstjenestene bak de
-fleste av de private prosjektene over, pluss backup og noen ting for familien. Det er der jeg har
-lært mesteparten av det jeg kan om Linux, nettverk, og hvorfor du tar backup *før* du rører
-lagringsoppsettet.
-
-<div align="center">
-  <img alt="Status for hjemmeserver" width="100%" src="https://raw.githubusercontent.com/hellosverre/hellosverre/main/assets/status-no.svg">
 </div>
 
 <br>
