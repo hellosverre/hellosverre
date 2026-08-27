@@ -33,15 +33,18 @@ Most of my attention right now goes to **AI systems** — the layer that sits be
 real work. Orchestration, context handling, tool routing, and knowing where a model will quietly
 get something wrong so you can build the check that catches it before a user does.
 
-The other half is deliberate and slower: **learning the fundamentals properly**. AI makes it very
-easy to ship code you cannot debug. I use it hard, every day, but I read what it writes and I want
-to understand the layer underneath it — how these models actually arrive at an answer, what makes
-one prompt hold up and another fall over. Otherwise you are not building anything, you are just
-moving the bug somewhere you cannot see it.
+The other half is deliberate and slower: **the layer underneath**. AI makes it very easy to ship
+code you cannot debug, so I keep the habit of going one level below what a job strictly needs —
+[`hotpath`](https://github.com/hellosverre/hotpath) is where that happens, and not one number in it
+is remembered from someone's blog. I use AI hard, every day. Being able to tell when it is wrong is
+the entire reason the fundamentals are worth the time — otherwise you are not building anything,
+you are just moving the bug somewhere you cannot see it.
 
 > [!NOTE]
 > **Looking for an apprenticeship from August 2027** — *IT-utviklerfaget* or *IT-driftsfaget*, in the Ski/Oslo area.
-> Currently in Vg2 Informasjonsteknologi, heading for a *fagbrev*. Several years of coding, and a home server I ran for over a year.
+> Currently in Vg2 Informasjonsteknologi, heading for a *fagbrev*. I have been writing code for years — this
+> account is new because most of that work lived locally or in private repos. Three packages published
+> (two on npm, one on PyPI), and a home server I ran for over a year.
 > Are you a *lærebedrift*, or do you know one? **[Get in touch →](mailto:sverresig@proton.me)**
 
 <br>
@@ -57,6 +60,15 @@ moving the bug somewhere you cannot see it.
 <br>
 
 ## Public repos
+
+#### [`hotpath`](https://github.com/hellosverre/hotpath) <sub>Rust · MIT</sub>
+
+Faster versions of ordinary things, with the measurement to back it up. Counting newlines seven
+ways — naive, SWAR, `memchr`, `bytecount`, hand-written AVX2 behind a runtime feature check, threaded
+— measured against what a single core can pull from memory, so it is obvious at which point the code
+stopped being the bottleneck. Every entry needs a baseline, a named mechanism and error bars, and
+**the results table is generated from `criterion` output rather than typed by hand**. The losses get
+published too: a table of nothing but wins is a table nobody should believe.
 
 #### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT · <code>pip install slabkit</code></sub>
 
@@ -89,9 +101,11 @@ cooldowns, permission gates, context menus, autocomplete, hot reload.
 ## Also built
 
 Private repos. Happy to walk through any of them, or give a *lærebedrift* read access.
+**vellum** is the one with the process on show — every feature lands as a reviewed pull request against a numbered ADR.
 
 | Project | What it is | Stack |
 |---|---|---|
+| **vellum** | Discord automation platform — visual flow builder, durable job runner, and a copilot that writes the flows | Next.js · discord.js · Drizzle |
 | **krait** | Licensed desktop product — storefront, auth, and a licensing/entitlement API | Next.js 16 · Tailwind 4 · Better Auth + TOTP · Drizzle/libSQL |
 | **aether** | Analytics for ER:LC server owners — dashboard plus API on a VM behind a Cloudflare Tunnel | Next.js 15 · Hono · Drizzle · Postgres · Redis |
 | **tnrp** | Community platform: marketing site, dashboard, leaderboard, verification flow, moderation and economy bot, click-through staff HUD | Next.js 16 · discord.js · Tauri 2 |

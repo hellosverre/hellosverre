@@ -33,15 +33,18 @@ Mesteparten av oppmerksomheten min går nå til **AI-systemer** — laget som li
 og faktisk arbeid. Orkestrering, konteksthåndtering, ruting av verktøy, og det å vite hvor en modell
 kommer til å ta feil i det stille, slik at du får bygget kontrollen som fanger det opp før en bruker gjør det.
 
-Den andre halvdelen er bevisst og tregere: **å lære grunnprinsippene ordentlig**. AI gjør det veldig
-lett å sende fra seg kode du ikke klarer å feilsøke. Jeg bruker det hardt, hver dag, men jeg leser
-det som blir skrevet, og jeg vil forstå laget under — hvordan disse modellene faktisk kommer fram
-til et svar, hva som gjør at én prompt holder og en annen ryker. Ellers bygger du ingenting, du
-flytter bare feilen dit du ikke ser den.
+Den andre halvdelen er bevisst og tregere: **laget under**. AI gjør det veldig lett å sende fra seg
+kode du ikke klarer å feilsøke, så jeg holder på vanen med å gå ett nivå lenger ned enn oppgaven
+strengt tatt krever — [`hotpath`](https://github.com/hellosverre/hotpath) er der det skjer, og ikke
+ett eneste tall der er husket fra en blogg. Jeg bruker AI hardt, hver dag. Å kunne se når det tar
+feil er hele grunnen til at grunnprinsippene er verdt tiden — ellers bygger du ingenting, du flytter
+bare feilen dit du ikke ser den.
 
 > [!NOTE]
 > **Ser etter læreplass fra august 2027** — IT-utviklerfaget eller IT-driftsfaget, i Ski/Oslo-området.
-> Går Vg2 Informasjonsteknologi nå og skal ta fagbrev. Har kodet i flere år og driftet egen server i over ett år.
+> Går Vg2 Informasjonsteknologi nå og skal ta fagbrev. Jeg har kodet i flere år — kontoen her er ny fordi
+> det meste av det arbeidet lå lokalt eller i private repoer. Tre pakker publisert (to på npm, én på PyPI),
+> og egen server driftet i over ett år.
 > Er du lærebedrift, eller kjenner du en? **[Ta kontakt →](mailto:sverresig@proton.me)**
 
 <br>
@@ -57,6 +60,15 @@ flytter bare feilen dit du ikke ser den.
 <br>
 
 ## Åpen kildekode
+
+#### [`hotpath`](https://github.com/hellosverre/hotpath) <sub>Rust · MIT</sub>
+
+Raskere versjoner av helt vanlige ting, med målinger som holder. Telling av linjeskift på sju måter
+— naiv, SWAR, `memchr`, `bytecount`, håndskrevet AVX2 bak en sjekk av CPU-funksjoner i runtime, og
+trådet — målt mot hva én kjerne klarer å hente fra minnet, slik at det er tydelig når koden sluttet
+å være flaskehalsen. Hver oppføring må ha en baseline, en navngitt mekanisme og feilmarginer, og
+**resultattabellen genereres fra `criterion` i stedet for å skrives for hånd**. Tapene publiseres
+også: en tabell med bare seiere er en tabell ingen bør tro på.
 
 #### [`slab`](https://github.com/hellosverre/slab) <sub>Python · MIT · <code>pip install slabkit</code></sub>
 
@@ -88,9 +100,11 @@ cooldowns, tilgangsstyring, kontekstmenyer, autocomplete, hot reload.
 ## Også bygget
 
 Private repoer. Jeg går gjerne gjennom hvilket som helst av dem, eller gir en lærebedrift lesetilgang.
+**vellum** er den med prosessen synlig — hver funksjon lander som en pull request med review, mot en nummerert ADR.
 
 | Prosjekt | Hva det er | Stack |
 |---|---|---|
+| **vellum** | Automatiseringsplattform for Discord — visuell flytbygger, varig jobbkjører og en copilot som skriver flytene | Next.js · discord.js · Drizzle |
 | **krait** | Lisensiert desktop-produkt — nettbutikk, innlogging og et API for lisenser og rettigheter | Next.js 16 · Tailwind 4 · Better Auth + TOTP · Drizzle/libSQL |
 | **aether** | Analyse for ER:LC-servereiere — dashbord og API på en VM bak en Cloudflare Tunnel | Next.js 15 · Hono · Drizzle · Postgres · Redis |
 | **tnrp** | Community-plattform: nettside, dashbord, ledertavle, verifiseringsflyt, moderasjons- og økonomibot, klikk-gjennom HUD for staff | Next.js 16 · discord.js · Tauri 2 |
