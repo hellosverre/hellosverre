@@ -61,6 +61,13 @@ you are just moving the bug somewhere you cannot see it.
 
 ## Public repos
 
+#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
+
+Skins for Claude Code's transcript: themed tool rows, reply gutters, spinner words, diff and terminal
+cards, and a context-and-limits band above the prompt. `/skin` swaps them live, every skin has a light
+palette, a folder can pin its own look, and **Claude can design a skin for you** through a tool the mod
+gives it. A skin only changes what is drawn; the conversation the model reads is untouched.
+
 #### [`hotpath`](https://github.com/hellosverre/hotpath) <sub>Rust · MIT</sub>
 
 Faster versions of ordinary things, with the measurement to back it up. Counting newlines seven
@@ -84,13 +91,6 @@ read and you cannot navigate; this one ships **interactive views** over MCP Apps
 where clicking a local renames it and clicking a call follows it, a function browser, and a call
 graph. You and the model look at the same program, so a rename you make is the name its next
 decompile sees. Analysis runs once in a resident PyGhidra bridge: 25 s the first time, 0.3 s after.
-
-#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
-
-Skins for Claude Code's transcript: themed tool rows, reply gutters, spinner words, diff and terminal
-cards, and a context-and-limits band above the prompt. `/skin` swaps them live, every skin has a light
-palette, a folder can pin its own look, and **Claude can design a skin for you** through a tool the mod
-gives it. A skin only changes what is drawn; the conversation the model reads is untouched.
 
 #### [`mod-store`](https://github.com/hellosverre/mod-store) <sub>TypeScript · MIT</sub>
 

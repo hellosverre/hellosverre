@@ -61,6 +61,14 @@ bare feilen dit du ikke ser den.
 
 ## Åpen kildekode
 
+#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
+
+Skins for transkripsjonen i Claude Code: tematiske verktøyrader, svarmarger, spinner-ord, diff- og
+terminalkort, og et felt over prompten med kontekst og grenser. `/skin` bytter dem mens du jobber,
+hver skin har en lys palett, en mappe kan låse sitt eget utseende, og **Claude kan designe en skin for
+deg** gjennom et verktøy modden gir den. En skin endrer bare det som tegnes; samtalen modellen leser
+er urørt.
+
 #### [`hotpath`](https://github.com/hellosverre/hotpath) <sub>Rust · MIT</sub>
 
 Raskere versjoner av helt vanlige ting, med målinger som holder. Telling av linjeskift på sju måter
@@ -85,14 +93,6 @@ der et klikk på en lokal variabel gir den nytt navn og et klikk på et kall fø
 funksjonsliste og en kallgraf. Du og modellen ser på det samme programmet, så et navn du endrer er
 navnet den ser ved neste dekompilering. Analysen kjøres én gang i en PyGhidra-bro som blir liggende:
 25 s første gang, 0,3 s etterpå.
-
-#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
-
-Skins for transkripsjonen i Claude Code: tematiske verktøyrader, svarmarger, spinner-ord, diff- og
-terminalkort, og et felt over prompten med kontekst og grenser. `/skin` bytter dem mens du jobber,
-hver skin har en lys palett, en mappe kan låse sitt eget utseende, og **Claude kan designe en skin for
-deg** gjennom et verktøy modden gir den. En skin endrer bare det som tegnes; samtalen modellen leser
-er urørt.
 
 #### [`mod-store`](https://github.com/hellosverre/mod-store) <sub>TypeScript · MIT</sub>
 
