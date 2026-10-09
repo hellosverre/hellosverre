@@ -77,6 +77,30 @@ Panelsystemet denne profilen er bygget på. Palettene utledes i OKLCH fra én fa
 publisert. Superellipse-hjørner, filmkorn, én bevegelse per panel — alt bygget innenfor det GitHub
 faktisk rendrer, der `<style>` blir gjort om til ren tekst og webfonter aldri lastes.
 
+#### [`ghidralens`](https://github.com/hellosverre/ghidralens) <sub>TypeScript · MIT · <code>npm i ghidralens</code></sub>
+
+Ghidra, rendret inne i AI-klienten. Alle andre Ghidra-MCP-servere returnerer tekst modellen kan lese
+og du ikke kan navigere i; denne sender **interaktive visninger** over MCP Apps: en levende dekompilator
+der et klikk på en lokal variabel gir den nytt navn og et klikk på et kall følger det, en
+funksjonsliste og en kallgraf. Du og modellen ser på det samme programmet, så et navn du endrer er
+navnet den ser ved neste dekompilering. Analysen kjøres én gang i en PyGhidra-bro som blir liggende:
+25 s første gang, 0,3 s etterpå.
+
+#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
+
+Skins for transkripsjonen i Claude Code: tematiske verktøyrader, svarmarger, spinner-ord, diff- og
+terminalkort, og et felt over prompten med kontekst og grenser. `/skin` bytter dem mens du jobber,
+hver skin har en lys palett, en mappe kan låse sitt eget utseende, og **Claude kan designe en skin for
+deg** gjennom et verktøy modden gir den. En skin endrer bare det som tegnes; samtalen modellen leser
+er urørt.
+
+#### [`mod-store`](https://github.com/hellosverre/mod-store) <sub>TypeScript · MIT</sub>
+
+En appbutikk for Claude Code-modder, inne i Claude Code. `/mods` blar og søker i rundt 2 700 modder
+fra miljøet, og **hver modd viser hva den har tilgang til før du installerer den**, fra *bare visning*
+til *nettverk*. Claude får søkeverktøy for å finne en for deg, men kan ikke installere noe: du trykker
+Installer selv, og ingenting installeres med `-y`.
+
 MCP-serverne under kom ut av en periode der jeg gravde i hvordan AI-klienter faktisk snakker med
 eksterne systemer. Ikke der oppmerksomheten min er nå, men de kjører fortsatt og de virker fortsatt.
 

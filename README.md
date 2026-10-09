@@ -77,6 +77,28 @@ The panel system this profile is built on. Palettes are derived in OKLCH from a 
 Superellipse corners, film grain, one motion idea per panel — all of it built inside GitHub's actual
 rendering envelope, where `<style>` is escaped to plain text and webfonts never load.
 
+#### [`ghidralens`](https://github.com/hellosverre/ghidralens) <sub>TypeScript · MIT · <code>npm i ghidralens</code></sub>
+
+Ghidra, rendered inside your AI client. Every other Ghidra MCP server returns text the model can
+read and you cannot navigate; this one ships **interactive views** over MCP Apps: a live decompiler
+where clicking a local renames it and clicking a call follows it, a function browser, and a call
+graph. You and the model look at the same program, so a rename you make is the name its next
+decompile sees. Analysis runs once in a resident PyGhidra bridge: 25 s the first time, 0.3 s after.
+
+#### [`claude-skins`](https://github.com/hellosverre/claude-skins) <sub>TypeScript · MIT</sub>
+
+Skins for Claude Code's transcript: themed tool rows, reply gutters, spinner words, diff and terminal
+cards, and a context-and-limits band above the prompt. `/skin` swaps them live, every skin has a light
+palette, a folder can pin its own look, and **Claude can design a skin for you** through a tool the mod
+gives it. A skin only changes what is drawn; the conversation the model reads is untouched.
+
+#### [`mod-store`](https://github.com/hellosverre/mod-store) <sub>TypeScript · MIT</sub>
+
+An app store for Claude Code mods, inside Claude Code. `/mods` browses and searches about 2,700
+community mods, and **every mod shows what it can reach before you install it**, from *display only*
+to *network*. Claude gets search tools to find one for you, but cannot install anything: you press
+Install yourself, and nothing is installed with `-y`.
+
 The MCP servers below came out of a stretch of digging into how AI clients actually talk to external
 systems. Not where my attention is now, but they still run and they still work.
 
