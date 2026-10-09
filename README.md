@@ -14,4 +14,5 @@
 
 Building [Metro](https://metrobot.app), an economy bot for ER:LC roleplay servers.\
 I build software with AI.\
+Made [claude-skins](https://github.com/hellosverre/claude-skins) [![stars](https://img.shields.io/github/stars/hellosverre/claude-skins?style=flat-square&label=%E2%98%85&color=444)](https://github.com/hellosverre/claude-skins/stargazers) and [mod-store](https://github.com/hellosverre/mod-store) [![stars](https://img.shields.io/github/stars/hellosverre/mod-store?style=flat-square&label=%E2%98%85&color=444)](https://github.com/hellosverre/mod-store/stargazers) for Claude Code.\
 Vg2 IT in Ski, Norway. Looking for a *læreplass* in IT-utviklerfaget from August 2027.
